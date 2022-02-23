@@ -1,28 +1,16 @@
-# QtGraphicalEffects
+https://stackoverflow.com/a/71235559
+
+# Unofffical QtGraphicalEffects for Qt6
 
 **The QtGraphicalEffects module has been deprecated and is no longer part of Qt.**
 
-The functionality of the module has been partially incorporated into the Qt5Compat module.
+However, to unofficially employ QtGraphicalEffects in Qt 6, do the following:
 
-The documentation for those parts can be found at
-[Qt 5 Compatibility APIs: Graphical Effects](https://doc.qt.io/qt-6/qtgraphicaleffects5-index.html)
-
-## Working on Qt 5
-
-To work on patches for the Qt 5 series, check out a local branch of the relevant Qt version, e.g.:
-
-```bash
-$ git checkout 5.15
-Branch '5.15' set up to track remote branch '5.15' from 'origin' by rebasing.
-Switched to a new branch '5.15'
-```
-
-## Going back in time
-
-To inspect the code in the `dev` branch prior to its removal, follow these steps:
-
-```bash
-$ git checkout -b my-dev dev~1
-Switched to a new branch 'my-dev'
-```
-
+$ git clone git://code.qt.io/qt/qtgraphicaleffects.git
+$ cd qtgraphicaleffects/
+$ git checkout 59ab3e11433a5157aac0f3af7c0d7fe70a373373 & cd ..
+$ ~/Qt/<VERSION>/gcc_64/bin/qmake qtgraphicaleffects
+$ make
+$ find qtgraphicaleffects/src/effects/ -maxdepth 1 -name \*.qml -exec cp {} qml/QtGraphicalEffects \;
+$ cp -r qtgraphicaleffects/src/effects/private/ qml/QtGraphicalEffects
+$ cp -r qml/QtGraphicalEffects ~/Qt/<VERSION>/gcc_64/qml/
